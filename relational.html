@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Page - Chemistry Project</title>
+    <link rel="stylesheet" href="data_intro_style.css">
+    <script defer src="relational.js"></script> <!-- JS for search/filter -->
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <h1>Chemistry Data Science Project</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="graph_intro.html">Graphs</a></li>
+                <li><a href="data_intro.html" >Data</a></li>
+                <li><a href="glossary.html">Glossary</a></li>
+                <li><a href="relational.html" class="active">Relational</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="input-container">
+            <input type="text" id="reactant1" placeholder="Enter first reactant (e.g., H2)">
+            <input type="text" id="reactant2" placeholder="Enter second reactant (e.g., O2)">
+            <button onclick="simulateReaction()">Simulate Reaction</button>
+        </div>
+    
+        <div id="reaction-output"></div>
+
+    </main>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Page - Chemistry Project</title>
     <link rel="stylesheet" href="data_intro_style.css">
-    <script defer src="data_intro_script.js"></script> <!-- JS for search/filter -->
+    <script defer src="script.js"></script> <!-- JS for search/filter -->
 </head>
 <body>
 
@@ -27,8 +27,9 @@
     <main>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search a Molecule...">
-            <button onclick="searchMolecule()">🔍</button>
+            <button onclick="searchFromInput()">🔍</button>
         </div>
+
 
         <!-- Alphabet Filter -->
         <div class="alphabet-filter">
@@ -64,40 +65,96 @@
         <!-- Data Table -->
         <table id="moleculeTable">
             <tr>
-                <td><a href="#">Water (H₂O)</a></td>
-                <td><a href="#">Sodium Chloride (NaCl)</a></td>
+                <td><a href="#" onclick="searchMolecule('water')">Water</a></td>
+                <td><a href="#"onclick="searchMolecule('Sodium Chloride')">Sodium Chloride (NaCl)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Oxygen (O₂)</a></td>
-                <td><a href="#">Ammonia (NH₃)</a></td>
+                <td><a href="#"onclick="searchMolecule('Oxygen')">Oxygen (O₂)</a></td>
+                <td><a href="#"onclick="searchMolecule('Ammonia')">Ammonia (NH₃)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Carbon Dioxide (CO₂)</a></td>
-                <td><a href="#">Sulfuric Acid (H₂SO₄)</a></td>
+                <td><a href="#"onclick="searchMolecule('Carbon Dioxide ')">Carbon Dioxide (CO₂)</a></td>
+                <td><a href="#"onclick="searchMolecule('Sulfuric Acid ')">Sulfuric Acid (H₂SO₄)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Glucose (C₆H₁₂O₆)</a></td>
-                <td><a href="#">Nitrogen (N₂)</a></td>
+                <td><a href="#"onclick="searchMolecule('Glucos')">Glucose (C₆H₁₂O₆)</a></td>
+                <td><a href="#"onclick="searchMolecule('Nitrogen ')">Nitrogen (N₂)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Ethanol (C₂H₅OH)</a></td>
-                <td><a href="#">Benzene (C₆H₆)</a></td>
+                <td><a href="#"onclick="searchMolecule('Ethanol ')">Ethanol (C₂H₅OH)</a></td>
+                <td><a href="#"onclick="searchMolecule('Benzene')">Benzene (C₆H₆)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Methane (CH₄)</a></td>
-                <td><a href="#">Phosphoric Acid (H₃PO₄)</a></td>
+                <td><a href="#"onclick="searchMolecule('Methane')">Methane (CH₄)</a></td>
+                <td><a href="#"onclick="searchMolecule('Phosphoric Acid')">Phosphoric Acid (H₃PO₄)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Caffeine (C₈H₁₀N₄O₂)</a></td>
-                <td><a href="#">Acetic Acid (CH₃COOH)</a></td>
+                <td><a href="#"onclick="searchMolecule('Caffeine')">Caffeine (C₈H₁₀N₄O₂)</a></td>
+                <td><a href="#"onclick="searchMolecule('Acetic Acid ')">Acetic Acid (CH₃COOH)</a></td>
             </tr>
             <tr>
-                <td><a href="#">Cholesterol (C₂₇H₄₆O)</a></td>
-                <td><a href="#">Ozone (O₃)</a></td>
+                <td><a href="#"onclick="searchMolecule('Cholesterol')">Cholesterol (C₂₇H₄₆O)</a></td>
+                <td><a href="#"onclick="searchMolecule('Ozone')">Ozone (O₃)</a></td>
             </tr>
         </table>
+        <div id="data-output"></div>
 
     </main>
 
+    <script>
+
+    
+        async function searchMolecule() {
+            const moleculeName = document.getElementById("searchInput").value.trim();
+            const dataOutput = document.getElementById("data-output");
+        
+            if (!moleculeName) {
+                dataOutput.innerHTML = "<p class='error'>Please enter a molecule name.</p>";
+                return;
+            }
+        
+            // PubChem API endpoint for searching by compound name
+            const url = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${encodeURIComponent(moleculeName)}/property/IUPACName,MolecularFormula,MolecularWeight/JSON`;
+           
+            try {
+                const response = await fetch(url);
+        
+                if (!response.ok) {
+                    throw new Error("Could not fetch molecule data. Check the name or try again.");
+                }
+        
+                const data = await response.json();
+                console.log(data)
+                const compoundData = data?.PC_Compounds?.[0];
+                const properties = data.PropertyTable.Properties[0];
+        
+                const descriptionUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${encodeURIComponent(moleculeName)}/JSON`;
+        // Get the description (may vary based on the data structure)
+        const description = compoundData?.props
+                    ?.find(prop => prop.urn.label === "Comment")?.value?.sval || "No description available.";
+                // fetch img 
+                const baseUrl = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/";
+            const imageUrl = `${baseUrl}${encodeURIComponent(moleculeName)}/PNG`;
+        
+            const img = await document.createElement("img");
+            img.src = imageUrl;
+            img.alt = moleculeName;
+            img.width = 100;
+            
+                // Display fetched data
+                dataOutput.innerHTML = `
+                    <h3>Results for "${moleculeName}"</h3>
+                    <p><strong>IUPAC Name:</strong> ${properties.IUPACName || "N/A"}</p>
+                    <p><strong>Molecular Formula:</strong> ${properties.MolecularFormula || "N/A"}</p>
+                    <p><strong>Molecular Weight:</strong> ${properties.MolecularWeight || "N/A"}</p>
+                    <img src=${imageUrl} alt=${moleculeName} width="300"/>
+                    <p>${description}</p>
+                `;
+            } catch (error) {
+                console.error(error);
+                dataOutput.innerHTML = `<p class='error'>Error: ${error.message}</p>`;
+            }
+        }
+            </script>
 </body>
 </html>
