@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Page - Chemistry Project</title>
+    <link rel="stylesheet" href="data_intro_style.css">
+    <script defer src="data_intro_script.js"></script> <!-- JS for search/filter -->
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <h1>Chemistry Data Science Project</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="graph_intro.html">Graphs</a></li>
+                <li><a href="data_intro.html">Data</a></li>
+                <li><a href="glossary_intro.html" class="active">Glossary</a></li>
+                <li><a href="relational.html">Relational</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search a Term...">
+            <button onclick="searchMolecule()">🔍</button>
+        </div>
+
+        <!-- Alphabet Filter -->
+        <div class="alphabet-filter">
+            <span onclick="filterByLetter('all')">All</span>
+            <span onclick="filterByLetter('A')">A</span>
+            <span onclick="filterByLetter('B')">B</span>
+            <span onclick="filterByLetter('C')">C</span>
+            <span onclick="filterByLetter('D')">D</span>
+            <span onclick="filterByLetter('E')">E</span>
+            <span onclick="filterByLetter('F')">F</span>
+            <span onclick="filterByLetter('G')">G</span>
+            <span onclick="filterByLetter('H')">H</span>
+            <span onclick="filterByLetter('I')">I</span>
+            <span onclick="filterByLetter('J')">J</span>
+            <span onclick="filterByLetter('K')">K</span>
+            <span onclick="filterByLetter('L')">L</span>
+            <span onclick="filterByLetter('M')">M</span>
+            <span onclick="filterByLetter('N')">N</span>
+            <span onclick="filterByLetter('O')">O</span>
+            <span onclick="filterByLetter('P')">P</span>
+            <span onclick="filterByLetter('Q')">Q</span>
+            <span onclick="filterByLetter('R')">R</span>
+            <span onclick="filterByLetter('S')">S</span>
+            <span onclick="filterByLetter('T')">T</span>
+            <span onclick="filterByLetter('U')">U</span>
+            <span onclick="filterByLetter('V')">V</span>
+            <span onclick="filterByLetter('W')">W</span>
+            <span onclick="filterByLetter('X')">X</span>
+            <span onclick="filterByLetter('Y')">Y</span>
+            <span onclick="filterByLetter('Z')">Z</span>
+        </div>
+
+        <!-- Data Table -->
+        <table id="moleculeTable">
+            <tr>
+                <td><a href="#">Water (H₂O)</a></td>
+                <td><a href="#">Atom</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Conformation</a></td>
+                <td><a href="#">Structural Formula</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Electronegetivity</a></td>
+                <td><a href="#">Molecular Formula</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Polarity</a></td>
+                <td><a href="#">Functional Group</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Isomer</a></td>
+                <td><a href="#">Nitrogen (N₂)</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Hydrogen Bond</a></td>
+                <td><a href="#">Functional Group</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Intermolecular Forces</a></td>
+                <td><a href="#">Phosphoric Acid (H₃PO₄)</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Molecule</a></td>
+                <td><a href="#">Reactivity</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Stability</a></td>
+                <td><a href="#">Solubility</a></td>
+            </tr>
+        </table>
+
+    </main>
+
+</body>
+</html>
