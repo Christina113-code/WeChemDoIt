@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs - Spider Diagram</title>
+    <link rel="stylesheet" href="spider_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <h1>Chemistry Data Science Project</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="graph_intro.html" class = "active" >Graphs</a></li>
+                <li><a href="data_intro.html" >Data</a></li>
+                <li><a href="glossary_intro.html">Glossary</a></li>
+                <li><a href="#">Relational</a></li>
+            </ul>
+        </nav>
+    </header> 
+
+    <!-- Graph Container -->
+    <main class="graph-container">
+        <<div class="graph-box">
+            <label for="molecule1">Molecule 1:</label>
+            <select id="molecule1" onchange="updateChart()">
+                <option value="water">Water (H₂O)</option>
+                <option value="oxygen">Oxygen (O₂)</option>
+                <option value="carbon_dioxide">Carbon Dioxide (CO₂)</option>
+                <option value="glucose">Glucose (C₆H₁₂O₆)</option>
+                <option value="ethanol">Ethanol (C₂H₅OH)</option>
+            </select>
+
+            <label for="molecule2">Molecule 2:</label>
+            <select id="molecule2" onchange="updateChart()">
+                <option value="sodium_chloride">Sodium Chloride (NaCl)</option>
+                <option value="ammonia">Ammonia (NH₃)</option>
+                <option value="sulfuric_acid">Sulfuric Acid (H₂SO₄)</option>
+                <option value="nitrogen">Nitrogen (N₂)</option>
+                <option value="benzene">Benzene (C₆H₆)</option>
+            </select>
+
+            <label for="molecule3">Molecule 3:</label>
+            <select id="molecule3" onchange="updateChart()">
+                <option value="sodium_chloride">Sodium Chloride (NaCl)</option>
+                <option value="ammonia">Ammonia (NH₃)</option>
+                <option value="sulfuric_acid">Sulfuric Acid (H₂SO₄)</option>
+                <option value="nitrogen">Nitrogen (N₂)</option>
+                <option value="benzene">Benzene (C₆H₆)</option>
+            </select>
+
+            <select id="labelDropdown" onchange="updateLabels()">
+                <option value="set1">Set 1</option>
+                <option value="set2">Set 2</option>
+                <option value="set3">Set 3</option>
+            </select>
+            
+            <canvas id="spiderChart"></canvas>
+        </div>
+        <div class="graph-description">
+            <h1>Spider Diagram</h1>
+            <p>
+                Spider diagrams, also known as radar charts, are useful for visualizing and comparing 
+                properties of different molecules, especially for analyzing how well they work together 
+                for a specific goal.
+            </p>
+            <p>
+                This can help understand how different molecules interact when compounded together 
+                for a particular task.
+            </p>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="nav-button left" onclick="prevGraph()">&#9665;</button>
+        <button class="nav-button right" onclick="nextGraph()">&#9655;</button>
+    </main>
+
+    <script src="spider.js"></script>
+
+</body>
+</html>

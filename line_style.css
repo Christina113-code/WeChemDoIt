@@ -16,20 +16,22 @@ nav ul {
 
 header {
     background: linear-gradient(to right, darkblue, purple); /* Gradient */
-    color: white
+    background: linear-gradient(to right, darkblue, purple); /* Gradient */
     padding: 20px;
     text-align: center;
 }
 
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 30px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: white
+    color: white;
     font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
 }
 
 nav ul li a.active {
