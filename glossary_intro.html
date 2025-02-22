@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Page - Chemistry Project</title>
     <link rel="stylesheet" href="data_intro_style.css">
-    <script defer src="data_intro_script.js"></script> <!-- JS for search/filter -->
+    <script defer src="glossary_test.js"></script>
 </head>
 <body>
 
@@ -24,10 +24,12 @@
     </header>
 
     <!-- Main Content -->
+    <div class="main-container">
+        <div class="arr left" id="left-arrow"><div></div></div>
     <main>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search a Term...">
-            <button onclick="searchMolecule()">🔍</button>
+            <button onclick="searchTerm()">🔍</button>
         </div>
 
         <!-- Alphabet Filter -->
@@ -62,9 +64,9 @@
         </div>
 
         <!-- Data Table -->
-        <table id="moleculeTable">
+        <table id="glossaryTable">
             <tr>
-                <td><a href="#">Water (H₂O)</a></td>
+                <td><a href="#">Water</a></td>
                 <td><a href="#">Atom</a></td>
             </tr>
             <tr>
@@ -72,7 +74,7 @@
                 <td><a href="#">Structural Formula</a></td>
             </tr>
             <tr>
-                <td><a href="#">Electronegetivity</a></td>
+                <td><a href="#">Electronegativity</a></td>
                 <td><a href="#">Molecular Formula</a></td>
             </tr>
             <tr>
@@ -81,7 +83,7 @@
             </tr>
             <tr>
                 <td><a href="#">Isomer</a></td>
-                <td><a href="#">Nitrogen (N₂)</a></td>
+                <td><a href="#">Nitrogen</a></td>
             </tr>
             <tr>
                 <td><a href="#">Hydrogen Bond</a></td>
@@ -89,7 +91,7 @@
             </tr>
             <tr>
                 <td><a href="#">Intermolecular Forces</a></td>
-                <td><a href="#">Phosphoric Acid (H₃PO₄)</a></td>
+                <td><a href="#">Phosphoric Acid</a></td>
             </tr>
             <tr>
                 <td><a href="#">Molecule</a></td>
@@ -101,7 +103,16 @@
             </tr>
         </table>
 
-    </main>
+        <table id="generatedTable" style="display: none;"></table>
 
+        <div id="definition-box">
+            <h2 id="term-title">Select a Term</h2>
+            <p id="term-definition">Click a term to view its definition.</p>
+        </div>
+
+    </main>
+        <div class="arr right" id="right-arrow"><div></div></div>
+    </div>  
+    <script src ="index.js"></script>
 </body>
 </html>

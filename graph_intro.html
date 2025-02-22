@@ -20,6 +20,8 @@
         </nav>
     </header> 
 
+    <div class="main-container">
+        <div class="arr left" id="left-arrow"><div></div></div>
 
     <main>
         <h2>Graphs Introduction</h2>
@@ -29,13 +31,16 @@
         <p>
             In chemistry, data is often multidimensional, involving variables such as concentration, temperature, pressure, time, and molecular structure. Advanced visual tools such as scatter plots, heat maps, 3D molecular models, and interactive dashboards allow researchers to analyze relationships between these variables with greater clarity. Machine learning algorithms can further enhance these insights by recognizing hidden patterns in large datasets.        </p>
         </p>
-        <p class="dots">...</p>
-        <button class="styled-button" onclick="window.location.href='line.html'">Line Graph</button>
-        <button class="styled-button" onclick="window.location.href='bar.html'">Bar Graph</button>
-        <button class="styled-button" onclick="window.location.href='spider.html'">Spider Diagram</button>
-        <button class="styled-button" onclick="window.location.href='heat.html'">Heat Map</button>
-
+        <select class="graph-select" onchange="window.location.href=this.value;">
+            <option value=""disabled selected hidden>Select Graph Type</option>
+            <option value="line.html">Line Graph</option>
+            <option value="bar.html">Bar Graph</option>
+            <option value="spider.html">Spider Diagram</option>
+            <option value="heat.html">Heat Map</option>
+        </select>
     </main>
+        <div class="arr right" id="right-arrow"><div></div></div>
+    </div>
     <script src ="index.js"></script>
 </body>
 </html>

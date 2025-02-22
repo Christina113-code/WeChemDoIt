@@ -49,6 +49,59 @@ nav ul li a.active {
     border-radius: 5px;
 }
 
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: linear-gradient();
+    position: relative;
+}
+
+.arr {
+    position: relative;
+    background: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.arr.left {
+    margin-right: 20px; 
+    order: -1;
+}
+
+.arr.right {
+    margin-left: 20px; 
+}
+
+.arr:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.arr div {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-top: 4px solid #202020;
+    border-left: 4px solid #202020;
+}
+
+.arr.right div {
+    transform: rotate(135deg);
+}
+
+.arr.left div {
+    transform: rotate(-45deg);
+}
+
 /* Main Content */
 main {
     background: white;

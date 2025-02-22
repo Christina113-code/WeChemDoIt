@@ -17,53 +17,57 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="graph_intro.html">Graphs</a></li>
                 <li><a href="data_intro.html" class="active">Data</a></li>
-                <li><a href="glossary.html">Glossary</a></li>
+                <li><a href="glossary_intro.html">Glossary</a></li>
                 <li><a href="relational.html">Relational</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main Content -->
+    <div class="main-container">
+        <div class="arr left" id="left-arrow"><div></div></div>
     <main>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search a Molecule...">
             <button onclick="searchFromInput()">🔍</button>
         </div>
 
-
         <!-- Alphabet Filter -->
         <div class="alphabet-filter">
-            <span onclick="filterByLetter('all')">All</span>
-            <span onclick="filterByLetter('A')">A</span>
-            <span onclick="filterByLetter('B')">B</span>
-            <span onclick="filterByLetter('C')">C</span>
-            <span onclick="filterByLetter('D')">D</span>
-            <span onclick="filterByLetter('E')">E</span>
-            <span onclick="filterByLetter('F')">F</span>
-            <span onclick="filterByLetter('G')">G</span>
-            <span onclick="filterByLetter('H')">H</span>
-            <span onclick="filterByLetter('I')">I</span>
-            <span onclick="filterByLetter('J')">J</span>
-            <span onclick="filterByLetter('K')">K</span>
-            <span onclick="filterByLetter('L')">L</span>
-            <span onclick="filterByLetter('M')">M</span>
-            <span onclick="filterByLetter('N')">N</span>
-            <span onclick="filterByLetter('O')">O</span>
-            <span onclick="filterByLetter('P')">P</span>
-            <span onclick="filterByLetter('Q')">Q</span>
-            <span onclick="filterByLetter('R')">R</span>
-            <span onclick="filterByLetter('S')">S</span>
-            <span onclick="filterByLetter('T')">T</span>
-            <span onclick="filterByLetter('U')">U</span>
-            <span onclick="filterByLetter('V')">V</span>
-            <span onclick="filterByLetter('W')">W</span>
-            <span onclick="filterByLetter('X')">X</span>
-            <span onclick="filterByLetter('Y')">Y</span>
-            <span onclick="filterByLetter('Z')">Z</span>
+            <span class="alphabet-letter">All</span>
+            <span class="alphabet-letter">A</span>
+            <span class="alphabet-letter">B</span>
+            <span class="alphabet-letter">C</span>
+            <span class="alphabet-letter">D</span>
+            <span class="alphabet-letter">E</span>
+            <span class="alphabet-letter">F</span>
+            <span class="alphabet-letter">G</span>
+            <span class="alphabet-letter">H</span>
+            <span class="alphabet-letter">I</span>
+            <span class="alphabet-letter">J</span>
+            <span class="alphabet-letter">K</span>
+            <span class="alphabet-letter">L</span>
+            <span class="alphabet-letter">M</span>
+            <span class="alphabet-letter">N</span>
+            <span class="alphabet-letter">O</span>
+            <span class="alphabet-letter">P</span>
+            <span class="alphabet-letter">Q</span>
+            <span class="alphabet-letter">R</span>
+            <span class="alphabet-letter">S</span>
+            <span class="alphabet-letter">T</span>
+            <span class="alphabet-letter">U</span>
+            <span class="alphabet-letter">V</span>
+            <span class="alphabet-letter">W</span>
+            <span class="alphabet-letter">X</span>
+            <span class="alphabet-letter">Y</span>
+            <span class="alphabet-letter">Z</span>
         </div>
 
         <!-- Data Table -->
         <table id="moleculeTable">
+            <tr>
+                <td colspan="2" style="font-size: 20px; font-weight: bold;">Chemical Name</td>
+            </tr>
             <tr>
                 <td><a href="#" onclick="searchMolecule('water')">Water</a></td>
                 <td><a href="#"onclick="searchMolecule('Sodium Chloride')">Sodium Chloride (NaCl)</a></td>
@@ -100,6 +104,9 @@
         <div id="data-output"></div>
 
     </main>
+        <div class="arr right" id="right-arrow"><div></div></div>
+    </div>   
+    <script src ="index.js"></script>
 
     <script>
 
