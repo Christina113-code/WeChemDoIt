@@ -71,7 +71,7 @@ p {
   color: gray;
 }
 .styled-button {
-  background-color: #af4ca3; /* Green background */
+  background-color: #550000; /* Green background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 15px 32px; /* Some padding */
@@ -140,7 +140,7 @@ p {
 
 /*Dropdown styling*/
 .graph-select {
-  background-color: #af4ca3;
+  background-color: #550000;
   border: none;
   color: white;
   font-size: 1.2rem;
