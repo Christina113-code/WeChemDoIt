@@ -1,6 +1,3 @@
-
-
-
 async function fetchCompoundImg(compoundName){
     const baseUrl = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/";
     const imageUrl = `${baseUrl}${encodeURIComponent(compoundName)}/PNG`;

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spider Diagram - Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="graphs_style.css" />
+    <style>
+      canvas {
+        max-width: 600px;
+        margin: 40px auto;
+        display: block;
+      }
+    </style>
+  </head>
+  <!-- Navigation Bar -->
+  <header>
+    <h1>Chemistry Data Science Project</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="graph_intro.html">Graphs</a></li>
+        <li><a href="data_intro.html" class="active">Data</a></li>
+        <li><a href="glossary_intro.html">Glossary</a></li>
+        <li><a href="relational.html">Relational</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <canvas id="myRadarChart"></canvas>
+
+    <script>
+      const ctx = document.getElementById("myRadarChart").getContext("2d");
+
+      const data = {
+        labels: [
+          "Communication",
+          "Teamwork",
+          "Problem Solving",
+          "Creativity",
+          "Technical Skills",
+          "Leadership",
+        ],
+        datasets: [
+          {
+            label: "Something",
+            data: [8, 9, 7, 6, 8, 7],
+            fill: true,
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgb(54, 162, 235)",
+            pointBackgroundColor: "rgb(54, 162, 235)",
+            pointHoverRadius: 6,
+          },
+          {
+            label: "Industry Average",
+            data: [6, 7, 7, 5, 6, 6],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+
+      const config = {
+        type: "radar",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Skill Comparison Spider Diagram",
+            },
+            tooltip: {
+              enabled: true,
+            },
+            legend: {
+              position: "top",
+            },
+          },
+          scales: {
+            r: {
+              angleLines: {
+                display: true,
+              },
+              suggestedMin: 0,
+              suggestedMax: 10,
+              ticks: {
+                stepSize: 1,
+              },
+              pointLabels: {
+                font: {
+                  size: 14,
+                },
+              },
+            },
+          },
+        },
+      };
+
+      new Chart(ctx, config);
+    </script>
+  </body>
+</html>
