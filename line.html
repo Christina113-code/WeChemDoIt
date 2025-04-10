@@ -13,8 +13,8 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="graph_intro.html">Graphs</a></li>
-        <li><a href="data_intro.html" class="active">Data</a></li>
+        <li><a href="graph_intro.html" class="active">Graphs</a></li>
+        <li><a href="data_intro.html">Data</a></li>
         <li><a href="glossary_intro.html">Glossary</a></li>
         <li><a href="relational.html">Relational</a></li>
       </ul>
@@ -23,10 +23,7 @@
   <body>
     <!-- Graphs Section -->
     <div class="graph-container">
-      <div class="graph-box">
-        <h2>Line Graph</h2>
-        <canvas id="lineGraph"></canvas>
-      </div>
+      <div class="graph-box"></div>
 
       <div class="graph-description">
         <h2>Line Graph</h2>
@@ -35,15 +32,17 @@
           help visualize trends which take place over time and are very simple
           for identifying patterns between two variables.
         </p>
-        <p><strong>Explanation of Data being visualized...</strong></p>
       </div>
     </div>
 
-    <!-- X and Y Axis Labels -->
-    <div class="x-axis-label">X Axis ▼</div>
-    <div class="y-axis-label">Y Axis ▼</div>
+    <label for="line-x-axis">X-Axis:</label>
+    <select id="line-x-axis"></select>
+
+    <label for="line-y-axis">Y-Axis:</label>
+    <select id="line-y-axis"></select>
+    <canvas id="lineChart" width="200" height="75"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="graph.js"></script>
+    <script src="linegraph.js"></script>
   </body>
 </html>

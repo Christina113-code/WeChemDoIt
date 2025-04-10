@@ -19,87 +19,103 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="graph_intro.html">Graphs</a></li>
-        <li><a href="data_intro.html" class="active">Data</a></li>
+        <li><a href="graph_intro.html" class="active">Graphs</a></li>
+        <li><a href="data_intro.html">Data</a></li>
         <li><a href="glossary_intro.html">Glossary</a></li>
         <li><a href="relational.html">Relational</a></li>
       </ul>
     </nav>
   </header>
   <body>
-    <canvas id="myRadarChart"></canvas>
+    <label for="element-select">Select Element:</label>
+    <select id="element-select"></select>
+
+    <canvas id="radarChart" width="700" height="74"></canvas>
 
     <script>
-      const ctx = document.getElementById("myRadarChart").getContext("2d");
+      document.addEventListener("DOMContentLoaded", async function () {
+        async function loadJSON(filePath) {
+          try {
+            const response = await fetch(filePath);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+          } catch (error) {
+            console.error("Could not load JSON: " + error);
+            return null;
+          }
+        }
 
-      const data = {
-        labels: [
-          "Communication",
-          "Teamwork",
-          "Problem Solving",
-          "Creativity",
-          "Technical Skills",
-          "Leadership",
-        ],
-        datasets: [
-          {
-            label: "Something",
-            data: [8, 9, 7, 6, 8, 7],
-            fill: true,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgb(54, 162, 235)",
-            pointBackgroundColor: "rgb(54, 162, 235)",
-            pointHoverRadius: 6,
-          },
-          {
-            label: "Industry Average",
-            data: [6, 7, 7, 5, 6, 6],
-            fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
-          },
-        ],
-      };
+        const elements = await loadJSON("data.json");
+        if (!elements) return;
 
-      const config = {
-        type: "radar",
-        data: data,
-        options: {
-          responsive: true,
-          plugins: {
-            title: {
-              display: true,
-              text: "Skill Comparison Spider Diagram",
-            },
-            tooltip: {
-              enabled: true,
-            },
-            legend: {
-              position: "top",
-            },
-          },
-          scales: {
-            r: {
-              angleLines: {
-                display: true,
+        const elementSelect = document.getElementById("element-select");
+        const ctx = document.getElementById("radarChart").getContext("2d");
+        let radarChart;
+
+        // Get numeric fields
+        const numericKeys = Object.keys(elements[0]).filter(
+          (key) => typeof elements[0][key] === "number"
+        );
+
+        // Populate dropdown
+        elements.forEach((el, i) => {
+          const option = new Option(el.Name, i);
+          elementSelect.add(option);
+        });
+
+        function updateRadarChart(index) {
+          const element = elements[index];
+
+          const dataValues = numericKeys.map((key) => element[key]);
+          const chartData = {
+            labels: numericKeys,
+            datasets: [
+              {
+                label: element.name || "Element",
+                data: dataValues,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                pointBackgroundColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 2,
               },
-              suggestedMin: 0,
-              suggestedMax: 10,
-              ticks: {
-                stepSize: 1,
+            ],
+          };
+
+          const config = {
+            type: "radar",
+            data: chartData,
+            options: {
+              responsive: true,
+              scales: {
+                r: {
+                  beginAtZero: false,
+                },
               },
-              pointLabels: {
-                font: {
-                  size: 14,
+              plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: function (context) {
+                      return `${context.label}: ${context.formattedValue}`;
+                    },
+                  },
                 },
               },
             },
-          },
-        },
-      };
+          };
 
-      new Chart(ctx, config);
+          if (radarChart) radarChart.destroy();
+          radarChart = new Chart(ctx, config);
+        }
+
+        // Default to first element
+        updateRadarChart(0);
+
+        elementSelect.addEventListener("change", (e) => {
+          updateRadarChart(parseInt(e.target.value));
+        });
+      });
     </script>
   </body>
 </html>
