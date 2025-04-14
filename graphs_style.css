@@ -43,7 +43,13 @@ nav ul li a {
 }
 
 nav ul li a.active {
-  background: lightblue;
+  background: #FFD700;
+  color: black;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background: #FFD700;
   color: black;
   border-radius: 5px;
 }
@@ -51,7 +57,7 @@ nav ul li a.active {
 /* Main Content */
 main {
   background: white;
-  color: darkblue; /* Change text color */
+  color: black; /* Change text color */
   margin: 40px auto;
   padding: 30px;
   width: 80%;
@@ -70,6 +76,7 @@ p {
   font-size: 2rem;
   color: gray;
 }
+
 .styled-button {
   background-color: #550000; /* Green background */
   border: none; /* Remove borders */

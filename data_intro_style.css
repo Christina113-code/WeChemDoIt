@@ -27,7 +27,7 @@ nav ul {
 }
 
 nav ul li {
-  margin: 0 15px;
+  margin: 0 20px;
 }
 
 nav ul li a {
@@ -35,13 +35,19 @@ nav ul li a {
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
+  padding: 10px 15px;
 }
 
 nav ul li a.active {
-  background: lightblue;
+  background: #FFD700;
   color: black;
   border-radius: 5px;
-  padding: 10px;
+}
+
+nav ul li a:hover {
+  background: #FFD700;
+  color: black;
+  border-radius: 5px;
 }
 
 /* Search Bar */
