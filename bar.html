@@ -21,12 +21,13 @@
   </header>
   <body>
     <div class="controls">
-      <label for="barField">Select a property to visualize:</label>
-      <select id="barField"></select>
-      <canvas id="barChart"></canvas>
+      <label for="elementSelect">Select an element:</label>
+      <select id="elementSelect">
+        <option value="all">All Elements</option>
+      </select>
     </div>
 
-    <canvas id="scatterChart" width="200" height="75"></canvas>
+    <canvas id="barChart" width="200" height="75"></canvas>
 
     <script src="bar.js"></script>
   </body>
